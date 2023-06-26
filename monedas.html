@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Monedas</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="bg-secondary">
+    <header>
+        <h1>change it</h1>
+        <div class="logo">
+            <a href="#">
+                <img src="imagenes/logo.png" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="social-icons">
+                <li><a href="#">
+                    <img src="imagenes/instagram.png" alt="instagram">
+                </a></li>
+                <li><a href="#">
+                    <img src="imagenes/facebook.png" alt="facebook">
+                </a></li>
+                <li><a href="#">
+                    <img src="imagenes/twitter.png" alt="twitter">
+                </a></li>
+                <li><a href="#">
+                    <img src="imagenes/whatsapp.png" alt="whatsapp">
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="row" style="padding: 3rem;">
+            <aside class="col-md-4">
+                <img src="imagenes/moneda.png" alt="">
+            </aside>
+            <div class="col-md-8">
+                <a href="../index.html" class="btn btn-primary m-3"> volver </a>
+        
+                <section class="row p-5 m-2 rounded bg-dark border border-white p-4" id="contenedor">
+        
+                    <h2 style="color: black;">Conversor de Monedas</h2>
+                    
+                    <div class="col-md-5 m-2">
+                      <div>
+                        <label class="col-md-5 m-2;" for="de" style="color:#ffffff;">De:</label>
+                        <select id="de" style="width:105% ;position: relative; height: 2rem;">
+                            <option value="arg">Peso (Arg)</option>
+                            <option value="usd">Dollar (USA)</option>
+                            <option value="eur">Euro (Euro)</option>
+                            <option value="jpy">Yen (Japones)</option>
+                            <option value="brl">Real (Brasil)</option>
+                            <option value="mex">Peso (Mexicano)</option>
+                            <option value="per">Nuevo Sol (Peru)</option>
+                            <option value="gbp">Libra Esterlina</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-5 m-2">
+                      <div>
+                        <label class="col-md-5 m-2;" for="a" style="color:#ffffff;">A:</label>
+                        <select id="a" style="width:105% ;position: relative; height: 2rem;">
+                            <option value="arg">Peso (Arg)</option>
+                            <option value="usd">Dollar (USA)</option>
+                            <option value="eur">Euro (Euro)</option>
+                            <option value="jpy">Yen (Japones)</option>
+                            <option value="brl">Real (Brasil)</option>
+                            <option value="mex">Peso (Mexicano)</option>
+                            <option value="per">Nuevo Sol (Peru)</option>
+                            <option value="gbp">Libra Esterlina</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-5 m-2">
+                      <div>
+                        <label class="col-md-5 m-2;" for="valor" style="color: #ffffff;">Valor:</label>
+                        <input type="number" id="valor" step="0.01" style="width:105% ;position: relative;">
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-5 m-2 ">
+                      <div>
+                        <label class="col-md-5 m-2;" for="resultado" style="color: #ffffff;">Resultado</label>
+                        <div id="resultado" class="lineas"></div>
+                      </div>
+                    </div>
+        
+                    <button onclick="convert()">Convertir</button>
+                   
+                </section>
+            </div>
+        </div>
+
+
+</main>
+<footer class="footer bg-dark text-light text-center py-3">
+    <h6>Parcial 2, Diseño y programación web 1</h6>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-left datosalumnos">
+
+                <a href="nosotros.html" class="nosotros"><div id="datos-alumnos">
+                    <p>Integrantes:</p>
+                    <ul>
+                        <li>Eloy Franco Aversano</li>
+                        <li>Agustín Kon</li>
+                        <li>Abril Stecco</li>
+                    </ul>
+                </div>
+            </a>
+            </div>
+            <div class="col-lg-6 text-right">
+                <div >
+                    <p>carrera: diseño multimedial</p>
+                    <p>Profesor: Antonio Rubio</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center ">
+            <div class="col-auto">
+                <img id="davinci" src="imagenes/davinic.png" alt="Logo da vinci">
+                <ul class="social-icons">
+                    <li><a href="#">
+                        <img src="imagenes/instagram.png" alt="instagram">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="imagenes/facebook.png" alt="facebook">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="imagenes/twitter.png" alt="twitter">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="imagenes/whatsapp.png" alt="whatsapp">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</footer>
+    <script>
+        function convert() {
+            var valor = parseFloat(document.getElementById('valor').value);
+            var de = document.getElementById('de').value;
+            var a = document.getElementById('a').value;
+            var resultado;
+
+            if(de === 'arg' && a === 'usd'){
+                var tipoCambio = 0.046;
+                resultado = valor * tipoCambio;
+            } else if( de === 'arg' && a === 'eur'){
+                var tipoCambio = 0.041;
+                resultado = valor * tipoCambio;
+            } else if( de === 'arg' && a === 'jpy'){
+                var tipoCambio = 0.56794;
+                resultado = valor * tipoCambio;
+            } else if( de === 'arg' && a ==='brl'){
+                var tipoCambio = 0.01918;
+                resultado = valor * tipoCambio;
+            } else if( de === 'arg' && a ==='mex'){
+                var tipoCambio = 0.06875;
+                resultado = valor * tipoCambio;
+            } else if( de === 'arg' && a ==='per'){
+                var tipoCambio = 0.01443;
+                resultado = valor * tipoCambio;
+            } else if( de === 'arg' && a ==='gbp'){
+                var tipoCambio = 0.00314;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='arg'){
+                var tipoCambio = 249.307;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='eur'){
+                var tipoCambio = 0.91572;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='yen'){
+                var tipoCambio = 141.597;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='brl'){
+                var tipoCambio = 4.78261;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='mex'){
+                var tipoCambio = 17.1418;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='per'){
+                var tipoCambio = 3.59665;
+                resultado = valor * tipoCambio;
+            } else if( de === 'usd' && a ==='gbp'){
+                var tipoCambio = 0.78319;
+                resultado = valor * tipoCambio;
+            } else if( de === 'eur' && a ==='arg'){
+                var tipoCambio = 272.215;
+                resultado = valor * tipoCambio;
+            } else if( de === 'eur' && a ==='usd'){
+                var tipoCambio = 1.09189;
+                resultado = valeuror * tipoCambio;
+            } else if( de === 'eur' && a ==='jpy'){
+                var tipoCambio = 154.619;
+                resultado = valor * tipoCambio;
+            } else if( de === 'eur' && a ==='brl'){
+                var tipoCambio = 5.22206;
+                resultado = valor * tipoCambio;
+            } else if( de === 'eur' && a ==='mex'){
+                var tipoCambio = 18.7169;
+                resultado = valor * tipoCambio;
+            } else if( de === 'eur' && a ==='per'){
+                var tipoCambio = 0.92713;
+                resultado = valor * tipoCambio;
+            } else if( de === 'eur' && a ==='gbp'){
+                var tipoCambio = 0.85522;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='arg'){
+                var tipoCambio = 1.76044;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='usd'){
+                var tipoCambio = 0.00706;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='eur'){
+                var tipoCambio = 0.00647;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='brl'){
+                var tipoCambio = 0.03377;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='mex'){
+                var tipoCambio = 0.12104;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='per'){
+                var tipoCambio = 0.0254;
+                resultado = valor * tipoCambio;
+            } else if( de === 'jpy' && a ==='gbp'){
+                var tipoCambio = 0.00553;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='arg'){
+                var tipoCambio = 52.089;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='usd'){
+                var tipoCambio = 0.20894;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='eur'){
+                var tipoCambio = 0.19132;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='jpy'){
+                var tipoCambio = 29.5846;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='mex'){
+                var tipoCambio = 3.58153;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='per'){
+                var tipoCambio = 0.75147;
+                resultado = valor * tipoCambio;
+            } else if( de === 'brl' && a ==='gbp'){
+                var tipoCambio = 0.16364;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='arg'){
+                var tipoCambio = 14.5379;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='usd'){
+                var tipoCambio = 0.05831;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='eur'){
+                var tipoCambio = 0.0534;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='jpy'){
+                var tipoCambio = 8.25697;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='per'){
+                var tipoCambio = 0.20973;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='gbp'){
+                var tipoCambio = 0.04567;
+                resultado = valor * tipoCambio;
+            } else if( de === 'mex' && a ==='brl'){
+                var tipoCambio = 0.27889;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='arg'){
+                var tipoCambio = 68.1441;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='usd'){
+                var tipoCambio = 0.27333;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='eur'){
+                var tipoCambio = 0.2503;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='jpy'){
+                var tipoCambio = 38.7032;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='brl'){
+                var tipoCambio = 1.30725;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='mex'){
+                var tipoCambio = 4.68544;
+                resultado = valor * tipoCambio;
+            } else if( de === 'per' && a ==='gbp'){
+                var tipoCambio = 0.21407;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='arg'){
+                var tipoCambio = 318.268;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='usd'){
+                var tipoCambio = 1.27661;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='eur'){
+                var tipoCambio = 1.16907;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='jpy'){
+                var tipoCambio = 180.776;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='brl'){
+                var tipoCambio = 6.10552;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='mex'){
+                var tipoCambio = 21.8834;
+                resultado = valor * tipoCambio;
+            } else if( de === 'gbp' && a ==='sol'){
+                var tipoCambio = 4.59152;
+                resultado = valor * tipoCambio;
+            }
+            
+        if (isNaN(resultado)) {
+        document.getElementById('resultado').innerHTML = 'Ingrese un valor válido.';
+        } else {
+        document.getElementById('resultado').innerHTML = resultado.toFixed(6) + ' ' + a;
+        }
+
+        }
+    </script>
+    <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="js/jquery-3.6.0.min.js">
+    
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de medidas</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="bg-secondary">
+  
+  <header>
+    <h1>change it</h1>
+    <div class="logo">
+        <a href="#">
+            <img src="imagenes/logo.png" alt="Logo">
+        </a>
+    </div>
+    <nav>
+        <ul class="social-icons">
+            <li><a href="#">
+                <img src="imagenes/instagram.png" alt="instagram">
+            </a></li>
+            <li><a href="#">
+                <img src="imagenes/facebook.png" alt="facebook">
+            </a></li>
+            <li><a href="#">
+                <img src="imagenes/twitter.png" alt="twitter">
+            </a></li>
+            <li><a href="#">
+                <img src="imagenes/whatsapp.png" alt="whatsapp">
+            </a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container" >
+  <div class="row" style="padding: 3rem;">
+    <aside class="col-md-4">
+      <img src="imagenes/distancia.png"  alt="">
+    </aside>
+    <div class="col-md-8">
+      <a href="../index.html" class="btn btn-primary m-3"> volver </a>
+    
+      <section class="row p-5 m-2 rounded bg-dark border border-white p-4" id="contenedor">
+    
+        <h2 style="color: black;">Conversor de Distancias</h2>
+        
+        <div class="col-md-5 m-2">
+          <div>
+            <label class="col-md-5 m-2;" for="de" style="color:#ffffff;">De:</label>
+            <select id="de" style="width:105% ;position: relative; height: 2rem;">
+              <option value="mm">Milimetros (mm)</option>
+              <option value="cm">Centímetros (cm)</option>
+              <option value="m">Metros (m)</option>
+              <option value="km">kilometros (km)</option>
+              <option value="in">Pulgada (in)</option>
+              <option value="ft">Pie (ft)</option>
+              <option value="mi">Milla (mi)</option>
+              <option value="yd">Yarda (yd)</option>
+              <option value="legua">Legua (lea)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="col-md-5 m-2">
+          <div>
+            <label class="col-md-5 m-2;" for="a" style="color:#ffffff;">A:</label>
+            <select id="a" style="width:105% ;position: relative; height: 2rem;">
+              <option value="mm">Milimetros (mm)</option>
+              <option value="cm">Centímetros (cm)</option>
+              <option value="m">Metros (m)</option>
+              <option value="km">kilometros (km)</option>  
+              <option value="in">Pulgadas (in)</option>
+              <option value="ft">Pies (ft)</option>
+              <option value="mi">Milla (mi)</option>
+              <option value="yd">Yarda (yd)</option>
+              <option value="legua">Legua (lea)</option>
+            </select>
+          </div>
+        </div>
+        
+        
+        <div class="col-md-5 m-2">
+          <div>
+            <label class="col-md-5 m-2;" for="valor" style="color: #ffffff;">Valor:</label>
+            <input type="number" id="valor" step="0.01" style="width:105% ;position: relative;">
+          </div>
+        </div>
+        
+        <div class="col-md-5 m-2 ">
+          <div>
+            <label class="col-md-5 m-2;" for="resultado" style="color: #ffffff;">Resultado</label>
+            <div id="resultado" class="lineas"></div>
+          </div>
+        </div>
+    
+        <button onclick="convert()">Convertir</button>
+      </section>
+    </div>
+  </div>
+
+  
+</main>
+<footer class="footer bg-dark text-light text-center py-3">
+  <h6>Parcial 2, Diseño y programación web 1</h6>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6 text-left datosalumnos">
+
+            <a href="nosotros.html" class="nosotros"><div id="datos-alumnos">
+              <p>Integrantes:</p>
+              <ul>
+                  <li>Eloy Franco Aversano</li>
+                  <li>Agustín Kon</li>
+                  <li>Abril Stecco</li>
+              </ul>
+          </div>
+      </a>
+          </div>
+          <div class="col-lg-6 text-right">
+              <div >
+                  <p>carrera: diseño multimedial</p>
+                  <p>Profesor: Antonio Rubio</p>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="row justify-content-center ">
+          <div class="col-auto">
+              <img id="davinci" src="imagenes/davinic.png" alt="Logo da vinci">
+              <ul class="social-icons">
+                  <li><a href="#">
+                      <img src="imagenes/instagram.png" alt="instagram">
+                  </a></li>
+                  <li><a href="#">
+                      <img src="imagenes/facebook.png" alt="facebook">
+                  </a></li>
+                  <li><a href="#">
+                      <img src="imagenes/twitter.png" alt="twitter">
+                  </a></li>
+                  <li><a href="#">
+                      <img src="imagenes/whatsapp.png" alt="whatsapp">
+                  </a></li>
+              </ul>
+          </div>
+      </div>
+
+  </div>
+</footer>
+    <script>
+      function convert() {
+      var valor = parseFloat(document.getElementById('valor').value);
+      var de = document.getElementById('de').value;
+      var a = document.getElementById('a').value;
+      var convertido;
+
+      if (de === 'mm' && a === 'cm') {
+        convertido = valor / 10;
+      } else if (de === 'mm' && a === 'm') {
+        convertido = valor / 1000;
+      }else if (de === 'mm' && a === 'km') {
+        convertido = valor / 1000000;
+      } else if (de === 'mm' && a === 'in') {
+        convertido = valor / 25.4;
+      } else if (de === 'mm' && a === 'ft') {
+        convertido = valor / 304.8;
+      } else if (de === 'mm' && a === 'mi') {
+        convertido = valor / 1.609e+6;
+      } else if (de === 'mm' && a === 'yd') {
+        convertido = valor / 914.4;
+      } else if (de === 'mm' && a === 'legua') {
+        convertido = valor / 482803.2;
+      } else if (de === 'cm' && a === 'mm') {
+        convertido = valor * 10;
+      } else if (de === 'cm' && a === 'm') {
+        convertido = valor / 100;
+      } else if (de === 'cm' && a === 'km') {
+        convertido = valor / 100000;
+      } else if (de === 'cm' && a === 'in') {
+        convertido = valor / 2.54;
+      } else if (de === 'cm' && a === 'ft') {
+        convertido = valor / 30.48;
+      } else if (de === 'cm' && a === 'mi') {
+        convertido = valor / 160934.4;
+      } else if (de === 'cm' && a === 'yd') {
+        convertido = valor / 91.44;
+      } else if (de === 'cm' && a === 'legua') {
+        convertido = valor / 48280.32;
+      } else if (de === 'm' && a === 'mm') {
+        convertido = valor * 1000;
+      } else if (de === 'm' && a === 'cm') {
+        convertido = valor * 100;
+      } else if (de === 'm' && a === 'km') {
+        convertido = valor / 1000;
+      } else if (de === 'm' && a === 'in') {
+        convertido = valor * 39.37;
+      } else if (de === 'm' && a === 'ft') {
+        convertido = valor * 3.281;
+      } else if (de === 'm' && a === 'mi') {
+        convertido = valor / 1609.344;
+      } else if (de === 'm' && a === 'yd') {
+        convertido = valor * 1.094;
+      } else if (de === 'm' && a === 'legua') {
+        convertido = valor / 4828.032;
+      } else if (de === 'km' && a === 'mm') {
+        convertido = valor * 1e+6;
+      } else if (de === 'km' && a === 'cm') {
+        convertido = valor * 100000;
+      } else if (de === 'km' && a === 'm') {
+        convertido = valor * 1000;
+      } else if (de === 'km' && a === 'in') {
+        convertido = valor * 39370.079;
+      } else if (de === 'km' && a === 'ft') {
+        convertido = valor * 3280.84;
+      } else if (de === 'km' && a === 'mi') {
+        convertido = valor / 1.609;
+      } else if (de === 'km' && a === 'yd') {
+        convertido = valor * 1093.613;
+      } else if (de === 'km' && a === 'legua') {
+        convertido = valor / 4.828;
+      } else if (de === 'in' && a === 'mm') {
+        convertido = valor * 25.4;
+      } else if (de === 'in' && a === 'cm') {
+        convertido = valor * 2.54;
+      } else if (de === 'in' && a === 'm') {
+        convertido = valor / 39.37;
+      } else if (de === 'in' && a === 'km') {
+        convertido = valor / 39370.079;
+      } else if (de === 'in' && a === 'ft') {
+        convertido = valor / 12;
+      } else if (de === 'in' && a === 'mi') {
+        convertido = valor / 63360;
+      } else if (de === 'in' && a === 'yd') {
+        convertido = valor / 36;
+      } else if (de === 'in' && a === 'legua') {
+        convertido = valor / 190080;
+      } else if (de === 'ft' && a === 'mm') {
+        convertido = valor * 304.8;
+      } else if (de === 'ft' && a === 'cm') {
+        convertido = valor * 30.48;
+      } else if (de === 'ft' && a === 'm') {
+        convertido = valor / 3.281;
+      } else if (de === 'ft' && a === 'km') {
+        convertido = valor / 3280.84;
+      } else if (de === 'ft' && a === 'in') {
+        convertido = valor * 12;
+      } else if (de === 'ft' && a === 'mi') {
+        convertido = valor / 5280;
+      } else if (de === 'ft' && a === 'yd') {
+        convertido = valor / 3;
+      } else if (de === 'ft' && a === 'legua') {
+        convertido = valor / 15840;
+      } else if (de === 'mi' && a === 'mm') {
+        convertido = valor * 1.609e+6;
+      } else if (de === 'mi' && a === 'cm') {
+        convertido = valor * 160934.4;
+      } else if (de === 'mi' && a === 'm') {
+        convertido = valor * 1609.344;
+      } else if (de === 'mi' && a === 'km') {
+        convertido = valor * 1.609;
+      } else if (de === 'mi' && a === 'in') {
+        convertido = valor * 63360;
+      } else if (de === 'mi' && a === 'ft') {
+        convertido = valor * 5280;
+      } else if (de === 'mi' && a === 'yd') {
+        convertido = valor * 1760;
+      } else if (de === 'mi' && a === 'legua') {
+        convertido = valor / 3;
+      } else if (de === 'yd' && a === 'mm') {
+        convertido = valor * 914.4;
+      } else if (de === 'yd' && a === 'cm') {
+        convertido = valor * 91.44;
+      } else if (de === 'yd' && a === 'm') {
+        convertido = valor / 1.094;
+      } else if (de === 'yd' && a === 'km') {
+        convertido = valor / 1093.613;
+      } else if (de === 'yd' && a === 'in') {
+        convertido = valor * 36;
+      } else if (de === 'yd' && a === 'ft') {
+        convertido = valor * 3;
+      } else if (de === 'yd' && a === 'mi') {
+        convertido = valor / 1760;
+      } else if (de === 'yd' && a === 'legua') {
+        convertido = valor / 5280;
+      } else if (de === 'legua' && a === 'mm') {
+        convertido = valor * 482803.2;
+      } else if (de === 'legua' && a === 'cm') {
+        convertido = valor * 48280.32;
+      } else if (de === 'legua' && a === 'm') {
+        convertido = valor * 4828.032;
+      } else if (de === 'legua' && a === 'km') {
+        convertido = valor * 4.828;
+      } else if (de === 'legua' && a === 'in') {
+        convertido = valor * 190080;
+      } else if (de === 'legua' && a === 'ft') {
+        convertido = valor * 15840;
+      } else if (de === 'legua' && a === 'mi') {
+        convertido = valor * 3;
+      }
+
+      if (isNaN(convertido)) {
+        document.getElementById('resultado').innerHTML = 'Ingrese un valor válido.';
+      } else {
+        document.getElementById('resultado').innerHTML = convertido.toFixed(5) + ' ' + a;
+      }
+      
+    }
+    </script>
+    <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="js/jquery-3.6.0.min.js">
+  
+</body>
+</html>

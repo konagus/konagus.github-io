@@ -1,0 +1,4 @@
+Change It!
+es una aplicación que se utiliza para convertir unidades de longitud, temperatura y/o valor de la moneda.
+Habitualmente uno tiene que hacer calculos que no tiene al alcance de su mano, como por ejemplo, cuanto vale en otra moneda un producto. y uno tiene que averiguar el valor, tal vez si no recuerda, como hacer la cuenta.
+Change it lo resuelve todo, instantaneamente ponés un valor en la unidad de medida que necesita y "change it" ya está listo.
